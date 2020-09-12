@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- dtd：document type definition 配置文件规范 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fk.shopping.dao.ProductMapper">
+
+    <select id="getAllProduct" resultType="com.fk.shopping.entity.Product">
+        select  * from product
+    </select>
+    <select id="getProductById" resultType="com.fk.shopping.entity.Product">
+        select  * from product where id=#{id}
+    </select>
+    <select id="getProductByKindId" resultType="com.fk.shopping.entity.Product">
+        select  * from product where cate_id=#{cate_id}
+    </select>
+    <select id="getProductByKeyword" resultType="com.fk.shopping.entity.Product">
+        select  *  from product  where trade like #{keyword}
+    </select>
+    <select id="getProductLike" resultType="com.fk.shopping.entity.Product">
+        select  * from product  where cate_id=#{cate_id} and trade like #{keyword}
+    </select>
+</mapper>

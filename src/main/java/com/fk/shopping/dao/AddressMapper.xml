@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- dtd：document type definition 配置文件规范 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fk.shopping.dao.AddressMapper">
+    <insert id="addAddress">
+        insert into address values (null,#{uid},#{name},#{phone},#{province},#{city},#{detail},0)
+    </insert>
+    <update id="updateAddress">
+         update address set name=#{name},phone=#{phone},province=#{province},city=#{city},detail=#{detail} where id=#{id}
+    </update>
+    <update id="updateState">
+        update address set state=0  where uid=#{uid};
+        update address set state=1  where id=#{id};
+    </update>
+    <delete id="delAddress">
+        delete from address where id=#{id}
+    </delete>
+
+    <select id="getAddress" resultType="com.fk.shopping.entity.Address">
+        select  * from address where uid=#{uid}
+    </select>
+    <select id="getAllAddress" resultType="com.fk.shopping.entity.Address">
+        select  * from address order by uid desc
+    </select>
+</mapper>

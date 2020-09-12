@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- dtd：document type definition 配置文件规范 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fk.shopping.dao.UserMapper">
+    <select id="getUsername" resultType="com.fk.shopping.entity.User">
+        select * from user where username=#{username}
+    </select>
+    
+
+    <insert id="insertUser">
+        insert into  user(username,password,email,sex,regist_time,salt)
+        value(#{username},#{password},#{email},#{sex},now(),#{salt})
+    </insert>
+</mapper>
